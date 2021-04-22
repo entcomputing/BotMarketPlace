@@ -43,7 +43,6 @@ class InfoTest extends TestCase
         $this->withoutExceptionHandling();
         $appinfo = Info::factory()->make()->toArray();
         $response = $this->post("appinfo", $appinfo);
-        // $response->assertOk();
         $this->assertCount(1, Info::all());
 
     }

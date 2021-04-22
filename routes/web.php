@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AppinfosController;
 use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
 Route::name("admin.")->group(function () {
     Route::resource("/appinfo", InfoController::class);
 
